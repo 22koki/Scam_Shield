@@ -17,7 +17,7 @@ function MessageChecker() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>ScamShield</h1>
       <p>Paste a suspicious message below.</p>
 
@@ -35,8 +35,16 @@ function MessageChecker() {
       </button>
 
       {result && (
-        <div>
-          <h2>Result</h2>
+  <div
+    className={`result ${
+      result.risk_level === "High"
+        ? "high"
+        : result.risk_level === "Medium"
+        ? "medium"
+        : "low"
+    }`}
+  >
+    <h2>Result</h2>
           <p><strong>Risk:</strong> {result.risk_level}</p>
           <p><strong>Scam Type:</strong> {result.scam_type}</p>
           <p><strong>Advice:</strong> {result.advice}</p>
